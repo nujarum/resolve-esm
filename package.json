@@ -1,0 +1,13 @@
+{
+  "name": "@nujarum/resolve-esm",
+  "description": "Shim for import.meta.resolve",
+  "version": "0.0.1",
+  "author": "",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "repository":"github:nujarum/resolve-esm",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
