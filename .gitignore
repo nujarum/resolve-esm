@@ -1,0 +1,5 @@
+.cache/
+.tmp/
+coverage/
+node_modules/
+*.tmp
