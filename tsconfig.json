@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig-base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "./types",
+    "declarationMap": true,
+    "lib": [
+      "ESNext"
+    ],
+    // "outDir": "./dist",
+    "paths": {
+      "#*": ["./src/*.ts"],
+    },
+    "rootDir": ".",
+    "tsBuildInfoFile": ".cache/tsconfig.tsbuildinfo",
+    "typeRoots": [
+      "./node_modules/@types",
+    ],
+    "types": [
+      "node",
+    ],
+  },
+}

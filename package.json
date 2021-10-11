@@ -1,0 +1,70 @@
+{
+  "name": "@nujarum/resolve-esm",
+  "description": "Shim for `import.meta.resolve`",
+  "version": "1.0.0",
+  "author": {
+    "name": "nujarum",
+    "url": "https://github.com/nujarum"
+  },
+  "bugs": {
+    "url": "https://github.com/nujarum/resolve-esm/issues"
+  },
+  "dependencies": {
+    "callsites": "~4.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "concurrently": "^6.3.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.58.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^1.4.7",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "homepage": "https://github.com/nujarum/resolve-esm#readme",
+  "keywords": [
+    "ecmascript",
+    "esm",
+    "import",
+    "import.meta.resolve",
+    "meta",
+    "mjs",
+    "module",
+    "ponyfill",
+    "resolve",
+    "shim"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:nujarum/resolve-esm",
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rimraf .cache dist types",
+    "jest": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest",
+    "lint": "eslint . --cache --cache-file .cache/.eslintcache",
+    "test": "concurrently npm:jest npm:lint"
+  },
+  "type": "module",
+  "types": "./types/index.d.ts"
+}
