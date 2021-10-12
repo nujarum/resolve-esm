@@ -69,9 +69,9 @@ declare function importMetaResolve(specifier: string, parent?: string | URL): Pr
 ```
 
 ### Parameters
-* `specifier` (`string`)
+* `specifier` (Type: `string`)
   * The module specifier to resolve relative to `parent`.
-* `parent` (`string` | `URL` | `undefined`)
+* `parent` (Type: `string | URL | undefined`)
   * The absolute parent module URL to resolve from.
   * If none is specified, the value of [`import.meta.url`] is used as the default.
 
@@ -85,9 +85,9 @@ declare function importMetaResolveAll(specifiers: readonly string[], parent?: st
 ```
 
 ### Parameters
-* `specifiers` (`string[]`)
+* `specifiers` (Type: `string[]`)
   * The array of module specifiers to resolve relative to `parent`.
-* `parent` (`string` | `URL` | `undefined`)
+* `parent` (Type: `string | URL | undefined`)
   * The absolute parent module URL to resolve from.
   * If none is specified, the value of [`import.meta.url`] is used as the default.
 
@@ -115,6 +115,6 @@ For internal processing reasons, it is more efficient than calling `Promise.all(
 
 # Differences from similar modules
 
-This module is just a "wrapper" that internally calls the original `import.meta.resolve` and has no resolve logic of its own.
+This module is just a "wrapper" that internally calls the original [`import.meta.resolve`] and has no resolve logic of its own.
 
-Therefore, if the specification of the original `import.meta.url` changes, it will be easy to follow, and if the original becomes ["Stable"] in the future, it will be easy to migrate.
+Therefore, it will be easy to follow if the original specification changes, and it will be easy to migrate when the original becomes ["Stable"] in the future.
