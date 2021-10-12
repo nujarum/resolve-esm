@@ -11,6 +11,9 @@ interface WorkerData {
     readonly specifiers: readonly string[];
 }
 
+const execArgv = Object.freeze([
+    '--experimental-import-meta-resolve',
+]) as string[];
 const regexpUrl = /^\w+:\/\//;
 const workerUrl = createWorkerURL(workerContext);
 
@@ -36,12 +39,7 @@ export async function importMetaResolve(specifier: string, parent?: string | URL
 export async function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL) {
     parent ??= getCallerUrl();
     const workerData: WorkerData = { parent, specifiers };
-    const workerOptions: WorkerOptions = {
-        execArgv: [
-            '--experimental-import-meta-resolve',
-        ],
-        workerData,
-    };
+    const workerOptions: WorkerOptions = { execArgv, workerData };
     const worker = new Worker(workerUrl, workerOptions);
     try {
         const [results] = await once(worker, 'message') as [string[]];
@@ -62,10 +60,16 @@ function getCallerUrl() {
     for (let i = callSites.length, callSite: CallSite | undefined; callSite = callSites[--i];) { // eslint-disable-line no-cond-assign
         const uri = callSite.getFileName();
         if (uri && !uri.startsWith('internal/')) {
-            return regexpUrl.test(uri) ? uri : pathToFileURL(uri).href;
+            if (regexpUrl.test(uri)) {
+                return uri;
+            }
+            const { href } = pathToFileURL(uri);
+            if (!href.includes('/node_modules/')) {
+                return href;
+            }
         }
     }
-    return import.meta.url;
+    return undefined;
 }
 
 async function workerContext() {

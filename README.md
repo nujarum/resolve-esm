@@ -30,19 +30,19 @@ This module provides functions equivalent to [`import.meta.resolve`] without the
     - [What is this function for?](#what-is-this-function-for)
 - [Differences from similar modules](#differences-from-similar-modules)
 
-
 # Usage
 
 ```shell-session
 npm i @nujarum/resolve-esm
 ```
 
-> **Note:**<br>
-> This module is only available in ES Module.
-
 ```js
 import { importMetaResolve } from '@nujarum/resolve-esm';
 ```
+
+> **Note:**<br/>
+> This module is only available in ES Module.
+
 ```js
 await importMetaResolve('./other.mjs');
 // => file:///path/to/__dirname/other.mjs
@@ -68,9 +68,6 @@ await importMetaResolve('fs');
 declare function importMetaResolve(specifier: string, parent?: string | URL): Promise<string>;
 ```
 
-> **Note:**<br>
-> The I/F of this function is the same as the original [`import.meta.resolve`].
-
 ### Parameters
 * `specifier` (`string`)
   * The module specifier to resolve relative to `parent`.
@@ -86,9 +83,6 @@ A `Promise` that resolves to a module URL string.
 ```ts
 declare function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
 ```
-
-> **Note:**<br>
-> This function receives an array of multiple specifiers as its first parameter.<br>
 
 ### Parameters
 * `specifiers` (`string[]`)
