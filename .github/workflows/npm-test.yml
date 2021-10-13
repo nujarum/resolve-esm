@@ -2,6 +2,9 @@ name: NPM Test
 
 on:
   push:
+    paths:
+      - 'src/**'
+      - 'test/**'
   workflow_dispatch:
 
 jobs:
