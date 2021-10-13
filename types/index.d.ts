@@ -2,7 +2,7 @@
 import { URL } from 'url';
 /**
  * Resolve a (single) module specifier.
- * @see [import.meta.resolve](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent)
+ * @see [`import.meta.resolve`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent)
  * @param specifier The module specifier to resolve relative to `parent`.
  * @param parent    The absolute parent module URL to resolve from. (@default [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url))
  * @returns         A `Promise` that resolves to a module URL string.
