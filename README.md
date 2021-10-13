@@ -64,6 +64,8 @@ await importMetaResolve('fs');
 
 ## `importMetaResolve`
 
+Resolve a (single) module specifier.
+
 ```ts
 declare function importMetaResolve(specifier: string, parent?: string | URL): Promise<string>;
 ```
@@ -79,6 +81,8 @@ declare function importMetaResolve(specifier: string, parent?: string | URL): Pr
 A `Promise` that resolves to a module URL string.
 
 ## `importMetaResolveAll`
+
+Resolve multiple module specifiers with same `parent`.
 
 ```ts
 declare function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
@@ -98,7 +102,7 @@ A `Promise` that resolves to an array of module URL strings.
 For internal processing reasons, it is more efficient than calling `Promise.all()` on your own.
 * works, but inefficient
   ```js
-  const result = await Promise.all([
+  const results = await Promise.all([
       importMetaResolve('specifier1'),
       importMetaResolve('specifier2'),
       importMetaResolve('specifier3'),
