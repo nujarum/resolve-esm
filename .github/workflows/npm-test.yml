@@ -1,11 +1,11 @@
-name: NPM test
+name: NPM Test
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  test:
+  npm-test:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository

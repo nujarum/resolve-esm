@@ -1,5 +1,4 @@
 import type { WorkerOptions } from 'worker_threads';
-import type { CallSite } from 'callsites';
 
 import { once } from 'events';
 import { Worker } from 'worker_threads';
@@ -14,12 +13,13 @@ interface WorkerData {
 const execArgv = Object.freeze([
     '--experimental-import-meta-resolve',
 ]) as string[];
-const regexpUrl = /^\w+:\/\//;
+const isUrl = /^\w+:\/\/.+/;
+const thisUrl = import.meta.url;
 const workerUrl = createWorkerURL(workerContext);
 
 /**
  * Resolve a (single) module specifier.
- * @see [import.meta.resolve](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent)
+ * @see [`import.meta.resolve`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent)
  * @param specifier The module specifier to resolve relative to `parent`.
  * @param parent    The absolute parent module URL to resolve from. (@default [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url))
  * @returns         A `Promise` that resolves to a module URL string.
@@ -44,6 +44,9 @@ export async function importMetaResolveAll(specifiers: readonly string[], parent
     try {
         const [results] = await once(worker, 'message') as [string[]];
         return results;
+    } catch (e) {
+        const { message, name } = Object(e) as Error;
+        throw Object.assign(new Error(message), { name });
     } finally {
         void worker.terminate();
     }
@@ -56,16 +59,12 @@ function createWorkerURL(workerContextFunction: () => void | Promise<void>) {
 }
 
 function getCallerUrl() {
-    const callSites = callsites();
-    for (let i = callSites.length, callSite: CallSite | undefined; callSite = callSites[--i];) { // eslint-disable-line no-cond-assign
+    for (const callSite of callsites()) {
         const uri = callSite.getFileName();
-        if (uri && !uri.startsWith('internal/')) {
-            if (regexpUrl.test(uri)) {
-                return uri;
-            }
-            const { href } = pathToFileURL(uri);
-            if (!href.includes('/node_modules/')) {
-                return href;
+        if (uri) {
+            const url = isUrl.test(uri) ? uri : pathToFileURL(uri).href;
+            if (url !== thisUrl) {
+                return url;
             }
         }
     }
