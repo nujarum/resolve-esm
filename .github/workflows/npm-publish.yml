@@ -9,7 +9,7 @@ on:
       - created
 
 jobs:
-  build:
+  npm-test:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
           - 16
 
   publish-npm:
-    needs: build
+    needs: npm-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -47,7 +47,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-gpr:
-    needs: build
+    needs: npm-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
