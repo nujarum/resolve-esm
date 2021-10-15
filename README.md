@@ -2,23 +2,25 @@
 
 [`import.meta.resolve`]:https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent
 [`import.meta.url`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url
-[`Stability 1`]:        https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
-["Stable"]:             https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
+[`Experimental`]:       https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
+[`Stable`]:             https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
 
 Shim for [`import.meta.resolve`].
 
-[![npm](https://img.shields.io/npm/v/@nujarum/resolve-esm)](https://www.npmjs.com/package/@nujarum/resolve-esm)
-[![code size](https://img.shields.io/github/languages/code-size/nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/)
-[![license](https://img.shields.io/github/license/nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
-[![node](https://img.shields.io/node/v/@nujarum/resolve-esm)](https://nodejs.org/)
+[![npm](https://badgen.net/npm/v/@nujarum/resolve-esm)](https://www.npmjs.com/package/@nujarum/resolve-esm)
+[![downloads](https://badgen.net/npm/dt/@nujarum/resolve-esm)](https://www.npmjs.com/package/@nujarum/resolve-esm)
+[![install size](https://packagephobia.com/badge?p=@nujarum/resolve-esm)](https://packagephobia.com/result?p=@nujarum/resolve-esm)
+[![license](https://badgen.net/npm/license/@nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
+[![node](https://badgen.net/npm/node/@nujarum/resolve-esm)](https://nodejs.org/)
+[![types](https://badgen.net/npm/types/@nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
 [![vulnerabilities](https://snyk.io/test/github/nujarum/resolve-esm/badge.svg?targetFile=package.json)](https://github.com/nujarum/resolve-esm/network/dependencies)
 [![CodeQL](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml)
 [![Open in VSCode](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/nujarum/resolve-esm)
 
-[`import.meta.resolve`] is currently experimental feature ([`Stability 1`]), and is only available with the `--experimental-import-meta-resolve` command flag enabled.
-
+[`import.meta.resolve`] is currently [`Experimental`], and is only available with the `--experimental-import-meta-resolve` command flag enabled.<br/>
 This module provides functions equivalent to [`import.meta.resolve`] without the experimental flag.
 
+- [Differences from similar modules](#differences-from-similar-modules)
 - [Usage](#usage)
 - [API](#api)
   - [`importMetaResolve`](#importmetaresolve)
@@ -28,7 +30,11 @@ This module provides functions equivalent to [`import.meta.resolve`] without the
     - [Parameters](#parameters-1)
     - [Returns](#returns-1)
     - [What is this function for?](#what-is-this-function-for)
-- [Differences from similar modules](#differences-from-similar-modules)
+
+# Differences from similar modules
+
+This module is just a "wrapper" that internally calls the original [`import.meta.resolve`] and has no resolve logic of its own.<br/>
+Therefore, it will be easy to follow if the original specification changes, and easy to migrate when the original becomes [`Stable`] in the future.
 
 # Usage
 
@@ -116,9 +122,3 @@ For internal processing reasons, it is more efficient than calling `Promise.all(
       'specifier3',
   ]);
   ```
-
-# Differences from similar modules
-
-This module is just a "wrapper" that internally calls the original [`import.meta.resolve`] and has no resolve logic of its own.
-
-Therefore, it will be easy to follow if the original specification changes, and it will be easy to migrate when the original becomes ["Stable"] in the future.
