@@ -12,10 +12,10 @@ interface WorkerData {
 
 const execArgv = Object.freeze([
     '--experimental-import-meta-resolve',
-]) as string[];
+]);
 const isUrl = /^\w+:\/\/.+/;
 const thisUrl = import.meta.url;
-const workerUrl = createWorkerURL(workerContext);
+const workerURL = createWorkerURL(workerContext);
 
 /**
  * Resolve a (single) module specifier.
@@ -39,8 +39,8 @@ export async function importMetaResolve(specifier: string, parent?: string | URL
 export async function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL) {
     parent ??= getCallerUrl();
     const workerData: WorkerData = { parent, specifiers };
-    const workerOptions: WorkerOptions = { execArgv, workerData };
-    const worker = new Worker(workerUrl, workerOptions);
+    const workerOptions = { execArgv, workerData } as WorkerOptions;
+    const worker = new Worker(workerURL, workerOptions);
     try {
         const [results] = await once(worker, 'message') as [string[]];
         return results;
