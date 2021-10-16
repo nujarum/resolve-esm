@@ -1,8 +1,8 @@
 import type { WorkerOptions } from 'worker_threads';
 
 import { once } from 'events';
-import { Worker } from 'worker_threads';
 import { URL, pathToFileURL } from 'url';
+import { Worker } from 'worker_threads';
 import callsites from 'callsites';
 
 interface WorkerData {
