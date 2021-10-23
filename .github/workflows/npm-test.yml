@@ -3,28 +3,10 @@ name: NPM Test
 on:
   push:
     paths:
-      - 'src/**'
-      - 'test/**'
+      - "src/**"
+      - "test/**"
   workflow_dispatch:
 
 jobs:
   npm-test:
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-      - run: npm ci
-      - run: npm test --if-present
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-        node:
-          - 14
-          - 16
+    uses: nujarum/actions/.github/workflows/npm-test.yml@main
