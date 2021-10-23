@@ -1,9 +1,10 @@
 <h1>resolve-esm</h1>
 
-[`import.meta.resolve`]:https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent
-[`import.meta.url`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url
 [`Experimental`]:       https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
 [`Stable`]:             https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
+[`import.meta.resolve`]:https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent
+[`import.meta.url`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url
+[`specification`]:      https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_resolver_algorithm_specification
 
 Shim for [`import.meta.resolve`].
 
@@ -34,7 +35,7 @@ This module provides functions equivalent to [`import.meta.resolve`] without the
 # Differences from similar modules
 
 This module is just a "wrapper" that internally calls the original [`import.meta.resolve`] and has no resolve logic of its own.<br/>
-Therefore, it will be easy to follow if the original specification changes, and easy to migrate when the original becomes [`Stable`] in the future.
+Therefore, it will be easy to follow if the original [`specification`] changes, and easy to migrate when the original becomes [`Stable`] in the future.
 
 # Usage
 
