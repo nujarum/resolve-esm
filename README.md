@@ -8,12 +8,12 @@
 
 Shim for [`import.meta.resolve`].
 
-[![npm](https://badgen.net/npm/v/@nujarum/resolve-esm)](https://www.npmjs.com/package/@nujarum/resolve-esm)
-[![downloads](https://badgen.net/npm/dt/@nujarum/resolve-esm)](https://www.npmjs.com/package/@nujarum/resolve-esm)
-[![install size](https://packagephobia.com/badge?p=@nujarum/resolve-esm)](https://packagephobia.com/result?p=@nujarum/resolve-esm)
-[![license](https://badgen.net/npm/license/@nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
-[![node](https://badgen.net/npm/node/@nujarum/resolve-esm)](https://nodejs.org/)
-[![types](https://badgen.net/npm/types/@nujarum/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
+[![npm](https://badgen.net/npm/v/resolve-esm)](https://www.npmjs.com/package/resolve-esm)
+[![downloads](https://badgen.net/npm/dt/resolve-esm)](https://www.npmjs.com/package/resolve-esm)
+[![install size](https://packagephobia.com/badge?p=resolve-esm)](https://packagephobia.com/result?p=resolve-esm)
+[![license](https://badgen.net/npm/license/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
+[![node](https://badgen.net/npm/node/resolve-esm)](https://nodejs.org/)
+[![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
 [![vulnerabilities](https://snyk.io/test/github/nujarum/resolve-esm/badge.svg?targetFile=package.json)](https://github.com/nujarum/resolve-esm/network/dependencies)
 [![CodeQL](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml)
 [![Open in VSCode](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/nujarum/resolve-esm)
@@ -40,11 +40,11 @@ Therefore, it will be easy to follow if the original [specification] changes, an
 # Usage
 
 ```shell-session
-npm i @nujarum/resolve-esm
+npm i resolve-esm
 ```
 
 ```js
-import { importMetaResolve } from '@nujarum/resolve-esm';
+import { importMetaResolve } from 'resolve-esm';
 ```
 
 > **Note:**<br/>

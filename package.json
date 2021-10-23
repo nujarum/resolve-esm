@@ -1,7 +1,7 @@
 {
-  "name": "@nujarum/resolve-esm",
+  "name": "resolve-esm",
   "description": "Shim for `import.meta.resolve`",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "nujarum",
     "url": "https://github.com/nujarum"
