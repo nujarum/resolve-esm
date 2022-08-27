@@ -1,7 +1,7 @@
 {
   "name": "resolve-esm",
   "description": "Shim for `import.meta.resolve`",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": {
     "name": "nujarum",
     "url": "https://github.com/nujarum"
@@ -68,5 +68,5 @@
     "test": "concurrently npm:jest npm:lint"
   },
   "type": "module",
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.mts"
 }
