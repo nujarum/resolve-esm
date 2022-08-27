@@ -53,13 +53,13 @@ import { importMetaResolve } from 'resolve-esm';
 await importMetaResolve('./other.mjs');
 // => file:///path/to/__dirname/other.mjs
 
-await importMetaResolve('./other.mjs', 'file:///different/path/parent.mjs');
+await importMetaResolve('./other.mjs', 'file:///different/path/base.mjs');
 // => file:///different/path/other.mjs
 
 await importMetaResolve('dependency');
 // => file:///path/to/node_modules/dependency/main.mjs
 
-await importMetaResolve('dependency', 'file:///different/path/parent.mjs');
+await importMetaResolve('dependency', 'file:///different/path/base.mjs');
 // => file:///different/path/node_modules/dependency/main.mjs
 
 await importMetaResolve('fs');
