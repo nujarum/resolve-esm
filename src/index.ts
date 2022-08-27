@@ -19,9 +19,9 @@ const workerURL = createWorkerURL(workerContext);
 
 /**
  * Resolve a (single) module specifier.
- * @see [`import.meta.resolve`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent)
+ * @see [`import.meta.resolve`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaresolvespecifier-parent)
  * @param specifier The module specifier to resolve relative to `parent`.
- * @param parent    The absolute parent module URL to resolve from. (@default [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url))
+ * @param parent    The absolute parent module URL to resolve from. (@defaultValue [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaurl))
  * @returns         A `Promise` that resolves to a module URL string.
 */
 export async function importMetaResolve(specifier: string, parent?: string | URL) {
@@ -33,7 +33,7 @@ export async function importMetaResolve(specifier: string, parent?: string | URL
 /**
  * Resolve multiple module specifiers with same `parent`.
  * @param specifiers    The array of module specifiers to resolve relative to `parent`.
- * @param parent        The absolute parent module URL to resolve from. (@default [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url))
+ * @param parent        The absolute parent module URL to resolve from. (@defaultValue [`import.meta.url`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaurl))
  * @returns             A `Promise` that resolves to an array of module URL strings.
  */
 export async function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL) {
@@ -55,7 +55,7 @@ export async function importMetaResolveAll(specifiers: readonly string[], parent
 function createWorkerURL(workerContextFunction: () => void | Promise<void>) {
     const fText = workerContextFunction.toString();
     const fBody = fText.slice(fText.indexOf('{') + 1, fText.lastIndexOf('}')).trim();
-    return new URL(`data:text/javascript,${fBody}`);
+    return new URL(`data:text/javascript,${encodeURIComponent(fBody)}`);
 }
 
 function getCallerUrl() {
