@@ -1,10 +1,10 @@
 <h1>resolve-esm</h1>
 
-["Experimental"]:       https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
-["Stable"]:             https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#documentation_stability_index
-[`import.meta.resolve`]:https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_resolve_specifier_parent
-[`import.meta.url`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_import_meta_url
-[specification]:        https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#esm_resolver_algorithm_specification
+["Experimental"]:           https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
+["Stable"]:                 https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
+[`import.meta.resolve`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaresolvespecifier-parent
+[`import.meta.url`]:        https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaurl
+[specification]:            https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#resolution-algorithm
 
 Shim for [`import.meta.resolve`].
 
@@ -16,7 +16,6 @@ Shim for [`import.meta.resolve`].
 [![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
 [![vulnerabilities](https://snyk.io/test/github/nujarum/resolve-esm/badge.svg?targetFile=package.json)](https://github.com/nujarum/resolve-esm/network/dependencies)
 [![CodeQL](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml)
-[![Open in VSCode](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/nujarum/resolve-esm)
 
 [`import.meta.resolve`] is currently ["Experimental"], and is only available with the `--experimental-import-meta-resolve` command flag enabled.<br/>
 This module provides functions equivalent to [`import.meta.resolve`] without the experimental flag.
@@ -24,13 +23,13 @@ This module provides functions equivalent to [`import.meta.resolve`] without the
 - [Differences from similar modules](#differences-from-similar-modules)
 - [Usage](#usage)
 - [API](#api)
-  - [`importMetaResolve`](#importmetaresolve)
-    - [Parameters](#parameters)
-    - [Returns](#returns)
-  - [`importMetaResolveAll`](#importmetaresolveall)
-    - [Parameters](#parameters-1)
-    - [Returns](#returns-1)
-    - [What is this function for?](#what-is-this-function-for)
+    - [`importMetaResolve`](#importmetaresolve)
+        - [Parameters](#parameters)
+        - [Returns](#returns)
+    - [`importMetaResolveAll`](#importmetaresolveall)
+        - [Parameters](#parameters-1)
+        - [Returns](#returns-1)
+        - [What is this function for?](#what-is-this-function-for)
 
 # Differences from similar modules
 
@@ -48,7 +47,7 @@ import { importMetaResolve } from 'resolve-esm';
 ```
 
 > **Note:**<br/>
-> This module is only available in ES Module.
+> This module is only available in Node.js ES Module.
 
 ```js
 await importMetaResolve('./other.mjs');
