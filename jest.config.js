@@ -1,17 +1,14 @@
 export default {
-    // extensionsToTreatAsEsm: ['.ts'],
+    extensionsToTreatAsEsm: ['.ts'],
     globals: {
         'ts-jest': {
             // tsconfig: '<rootDir>/tsconfig.json',
             useESM: true,
         }
     },
-    moduleNameMapper: {
-        // '^#(.+)': '<rootDir>/src/$1.ts',
-        '^#(.+)': '<rootDir>/dist/$1.mjs',
-    },
     preset: 'ts-jest/presets/default-esm',
     // preset: 'ts-jest/presets/js-with-ts-esm',
+    resolver: '<rootDir>/jest.resolver.cjs',
     testMatch: [
         '<rootDir>/test/**/*.ts',
     ],
