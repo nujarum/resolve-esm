@@ -13,7 +13,7 @@ Shim for [`import.meta.resolve`].
 [![install size](https://packagephobia.com/badge?p=resolve-esm)](https://packagephobia.com/result?p=resolve-esm)
 [![license](https://badgen.net/npm/license/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
 [![node](https://badgen.net/npm/node/resolve-esm)](https://nodejs.org/)
-[![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
+[![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.mts)
 [![vulnerabilities](https://snyk.io/test/github/nujarum/resolve-esm/badge.svg?targetFile=package.json)](https://github.com/nujarum/resolve-esm/network/dependencies)
 [![CodeQL](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml)
 
@@ -73,7 +73,7 @@ await importMetaResolve('fs');
 Resolve a (single) module specifier.
 
 ```ts
-declare function importMetaResolve(specifier: string, parent?: string | URL): Promise<string>;
+function importMetaResolve(specifier: string, parent?: string | URL): Promise<string>;
 ```
 
 ### Parameters
@@ -91,7 +91,7 @@ A `Promise` that resolves to a module URL string.
 Resolve multiple module specifiers with same `parent`.
 
 ```ts
-declare function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
+function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
 ```
 
 ### Parameters
