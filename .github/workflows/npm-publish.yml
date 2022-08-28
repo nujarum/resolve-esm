@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  # npm-test:
-  #   uses: nujarum/actions/.github/workflows/npm-test.yml@main
+  npm-test:
+    uses: nujarum/actions/.github/workflows/npm-test.yml@main
   npm-publish:
-    # needs: npm-test
+    needs: npm-test
     uses: nujarum/actions/.github/workflows/npm-publish.yml@main
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
