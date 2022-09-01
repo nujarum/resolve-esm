@@ -9,7 +9,7 @@
     "importHelpers": false,
     "incremental": true,
     "inlineSources": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "newLine": "LF",
     "noEmitHelpers": true,
     "noEmitOnError": true,

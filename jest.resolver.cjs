@@ -1,3 +1,4 @@
+'use strict';
 const { createRequire } = require('module');
 
 module.exports = function (module, options) {
