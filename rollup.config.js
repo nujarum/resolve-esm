@@ -10,7 +10,7 @@ const external = Object.freeze([
 const terserOptions = Object.freeze({
     compress: false,
     // format: { beautify: true },  // for debug
-    ecma: new Date().getFullYear(),
+    ecma: 2022,
 });
 
 export default {
