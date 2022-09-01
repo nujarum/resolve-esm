@@ -13,7 +13,7 @@ Shim for [`import.meta.resolve`].
 [![install size](https://packagephobia.com/badge?p=resolve-esm)](https://packagephobia.com/result?p=resolve-esm)
 [![license](https://badgen.net/npm/license/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/LICENSE)
 [![node](https://badgen.net/npm/node/resolve-esm)](https://nodejs.org/)
-[![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.mts)
+[![types](https://badgen.net/npm/types/resolve-esm)](https://github.com/nujarum/resolve-esm/blob/main/types/index.d.ts)
 [![vulnerabilities](https://snyk.io/test/github/nujarum/resolve-esm/badge.svg?targetFile=package.json)](https://github.com/nujarum/resolve-esm/network/dependencies)
 [![CodeQL](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nujarum/resolve-esm/actions/workflows/codeql-analysis.yml)
 

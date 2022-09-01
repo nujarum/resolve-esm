@@ -16,4 +16,4 @@ declare function importMetaResolve(specifier: string, parent?: string | URL): Pr
  */
 declare function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
 export { importMetaResolve, importMetaResolveAll };
-//# sourceMappingURL=index.d.mts.map
+//# sourceMappingURL=index.d.ts.map

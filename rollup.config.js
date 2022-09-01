@@ -17,7 +17,7 @@ export default {
     input: 'src/index.ts',
     external,
     output: {
-        file: 'dist/index.mjs',
+        file: 'dist/index.js',
         format: 'es',
         preferConst: true,
         sourcemap: true,
