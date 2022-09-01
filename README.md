@@ -2,6 +2,7 @@
 
 ["Experimental"]:           https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
 ["Stable"]:                 https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
+[Node.js ES Modules]:       https://nodejs.org/dist/latest-v16.x/docs/api/esm.html
 [`import.meta.resolve`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaresolvespecifier-parent
 [`import.meta.url`]:        https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaurl
 [specification]:            https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#resolution-algorithm
@@ -47,23 +48,23 @@ import { importMetaResolve } from 'resolve-esm';
 ```
 
 > **Note:**<br/>
-> This module is only available in Node.js ES Module.
+> This module works only in [Node.js ES Modules].
 
 ```js
-await importMetaResolve('./other.mjs');
-// => file:///path/to/__dirname/other.mjs
+await importMetaResolve('./other.js');
+// => "file:///path/to/__dirname/other.js"
 
-await importMetaResolve('./other.mjs', 'file:///different/path/base.mjs');
-// => file:///different/path/other.mjs
+await importMetaResolve('./other.js', 'file:///different/path/base.js');
+// => "file:///different/path/other.js"
 
 await importMetaResolve('dependency');
-// => file:///path/to/node_modules/dependency/main.mjs
+// => "file:///path/to/node_modules/dependency/main.js"
 
-await importMetaResolve('dependency', 'file:///different/path/base.mjs');
-// => file:///different/path/node_modules/dependency/main.mjs
+await importMetaResolve('dependency', 'file:///different/path/base.js');
+// => "file:///different/path/node_modules/dependency/main.js"
 
 await importMetaResolve('fs');
-// => node:fs
+// => "node:fs"
 ```
 
 # API
