@@ -36,16 +36,19 @@
     "node": ">=14"
   },
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./types/index.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
-    "types/**/*.d.mts"
+    "types/**/*.d.ts"
   ],
   "homepage": "https://github.com/nujarum/resolve-esm#readme",
   "imports": {
-    "#*": "./dist/*.mjs"
+    "#*": "./dist/*.js"
   },
   "keywords": [
     "ecmascript",
@@ -61,8 +64,8 @@
     "url"
   ],
   "license": "MIT",
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -76,5 +79,5 @@
     "test": "concurrently npm:jest npm:lint"
   },
   "type": "module",
-  "types": "./types/index.d.mts"
+  "types": "./types/index.d.ts"
 }
