@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { URL } from 'url';
+import { URL } from 'node:url';
 /**
  * Resolve a (single) module specifier.
  * @see [`import.meta.resolve`](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaresolvespecifier-parent)

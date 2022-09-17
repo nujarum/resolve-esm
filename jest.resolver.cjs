@@ -1,5 +1,5 @@
 'use strict';
-const { createRequire } = require('module');
+const { createRequire } = require('node:module');
 
 module.exports = function (module, options) {
     const { basedir, defaultResolver } = options;
