@@ -1,4 +1,4 @@
-import { URL } from 'url';
+import { URL } from 'node:url';
 import { expect, test } from '@jest/globals';
 import { importMetaResolve, importMetaResolveAll } from '#index';
 
