@@ -1,6 +1,5 @@
-/// <reference types="jest" />
-
 import { URL } from 'url';
+import { expect, test } from '@jest/globals';
 import { importMetaResolve, importMetaResolveAll } from '#index';
 
 test('importMetaResolve', async () => {
