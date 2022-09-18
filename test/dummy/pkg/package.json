@@ -1,0 +1,13 @@
+{
+  "name": "@dummy/pkg",
+  "description": "",
+  "version": "0.0.1",
+  "author": "",
+  "dependencies": {
+    "@dummy/lib": "file:../lib"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "type": "module"
+}
