@@ -37,8 +37,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./types/index.d.ts"
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
