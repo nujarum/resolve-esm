@@ -1,0 +1,14 @@
+{
+  "name": "@dummy/lib",
+  "description": "",
+  "version": "0.0.1",
+  "author": "",
+  "exports": {
+    "development": "./development.js",
+    "default": "./default.js"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "main": "./default.js",
+  "type": "module"
+}

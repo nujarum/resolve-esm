@@ -10,9 +10,6 @@ interface WorkerData {
     readonly specifiers: readonly string[];
 }
 
-const execArgv = Object.freeze([
-    '--experimental-import-meta-resolve',
-]);
 const isUrl = /^\w+:\/\/.+/;
 const thisUrl = import.meta.url;
 const workerURL = createWorkerURL(workerContext);
@@ -38,6 +35,11 @@ export async function importMetaResolve(specifier: string, parent?: string | URL
  */
 export async function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL) {
     parent ??= getCallerUrl();
+    const execArgv = Object.freeze([
+        ...new Set(process.execArgv)
+            .add('--experimental-import-meta-resolve')
+            .add('--no-warnings')
+    ]);
     const workerData: WorkerData = { parent, specifiers };
     const workerOptions = { execArgv, workerData } as WorkerOptions;
     const worker = new Worker(workerURL, workerOptions);
@@ -72,7 +74,7 @@ function getCallerUrl() {
 }
 
 async function workerContext() {
-    const { parentPort, workerData } = await import('worker_threads'); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+    const { parentPort, workerData } = await import('node:worker_threads'); // eslint-disable-line @typescript-eslint/no-unsafe-assignment
     const { parent, specifiers } = workerData as WorkerData;
     const results = await Promise.all(specifiers.map(specifier => import.meta.resolve!(specifier, parent)));
     parentPort!.postMessage(results);
