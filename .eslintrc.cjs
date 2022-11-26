@@ -23,12 +23,14 @@ module.exports = {
             parserOptions: {
                 project: 'tsconfig.json',
             },
+            plugins: [
+                'unicorn',
+            ],
             rules: {
                 'semi': ['error', 'always'],
                 '@typescript-eslint/explicit-module-boundary-types': 'off',
                 '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
-                '@typescript-eslint/no-non-null-assertion': 'off',
-                '@typescript-eslint/no-var-requires': 'off',
+                'unicorn/prefer-node-protocol': 'error',
             },
         },
     ],
