@@ -1,11 +1,11 @@
 <h1>resolve-esm</h1>
 
-["Experimental"]:           https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
-["Stable"]:                 https://nodejs.org/dist/latest-v16.x/docs/api/documentation.html#stability-index
-[Node.js ES Modules]:       https://nodejs.org/dist/latest-v16.x/docs/api/esm.html
-[`import.meta.resolve`]:    https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaresolvespecifier-parent
-[`import.meta.url`]:        https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#importmetaurl
-[specification]:            https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#resolution-algorithm
+["Experimental"]:           https://nodejs.org/docs/latest-v18.x/api/documentation.html#stability-index
+["Stable"]:                 https://nodejs.org/docs/latest-v18.x/api/documentation.html#stability-index
+[Node.js ES Modules]:       https://nodejs.org/docs/latest-v18.x/api/esm.html#modules-ecmascript-modules
+[`import.meta.resolve`]:    https://nodejs.org/docs/latest-v18.x/api/esm.html#importmetaresolvespecifier-parent
+[`import.meta.url`]:        https://nodejs.org/docs/latest-v18.x/api/esm.html#importmetaurl
+[specification]:            https://nodejs.org/docs/latest-v18.x/api/esm.html#resolution-algorithm
 
 Shim for [`import.meta.resolve`].
 
@@ -39,16 +39,15 @@ Therefore, it will be easy to follow if the original [specification] changes, an
 
 # Usage
 
-```shell-session
-npm i resolve-esm
+```console
+$ npm i resolve-esm
 ```
 
 ```js
 import { importMetaResolve } from 'resolve-esm';
 ```
 
-> **Note:**<br/>
-> This module works only in [Node.js ES Modules].
+> **Note** : This module works only in [Node.js ES Modules].
 
 ```js
 await importMetaResolve('./other.js');
@@ -92,12 +91,12 @@ A `Promise` that resolves to a module URL string.
 Resolve multiple module specifiers with same `parent`.
 
 ```ts
-function importMetaResolveAll(specifiers: readonly string[], parent?: string | URL): Promise<string[]>;
+function importMetaResolveAll(iterable: Readonly<Iterable<string>>, parent?: string | URL): Promise<string[]>;
 ```
 
 ### Parameters
-* `specifiers` (Type: `string[]`)
-  * The array of module specifiers to resolve relative to `parent`.
+* `iterable` (Type: `Iterable<string>`)
+  * An iterable (such as an array) of module specifiers to resolve relative to `parent`.
 * `parent` (Type: `string | URL | undefined`)
   * The absolute parent module URL to resolve from.
   * If none is specified, the value of [`import.meta.url`] is used as the default.
