@@ -1,16 +1,18 @@
-const tsJestOptions = Object.freeze({
-    useESM: true,
+import { esbuildOptions } from './rollup.config.js';
+
+const esbuildJestOptions = Object.freeze({
+    ...esbuildOptions,
+    target: 'node18',
 });
 
-/** @see [ts-jest » Docs » ESM Support](https://kulshekhar.github.io/ts-jest/docs/guides/esm-support) */
+/** @type {import('jest').Config} */
 export default {
     extensionsToTreatAsEsm: ['.ts'],
     moduleNameMapper: {
-        '^(\\.{1,2}/.*)\\.js$': '$1',
+        '^#(.+)$': '<rootDir>/dist/$1.js',
     },
-    // preset: 'ts-jest/presets/default-esm',
     reporters: ['default', 'github-actions'],
-    resolver: '<rootDir>/jest.resolver.cjs',
+    resolver: 'ts-jest-resolver',
     roots: [
         '<rootDir>/src',
         '<rootDir>/test',
@@ -19,6 +21,6 @@ export default {
         '**/*.spec.ts',
     ],
     transform: {
-        '^.+\\.ts$': ['ts-jest', tsJestOptions],
+        '^.+\\.ts$': ['esbuild-jest', esbuildJestOptions],
     },
 };
