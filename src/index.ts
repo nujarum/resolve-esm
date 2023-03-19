@@ -45,7 +45,7 @@ export async function importMetaResolveAll(iterable: Readonly<Iterable<string>>,
     if (specifiers.length < 1) {
         return [];
     }
-    parent ??= getCallerUrl();
+    parent ??= getCallerUrl() as string | undefined;
     const workerData: WorkerData = { parent, specifiers };
     const workerOptions = { execArgv, workerData } as WorkerOptions;
     const worker = new Worker(workerURL, workerOptions);
@@ -66,7 +66,7 @@ function createWorkerURL(workerContextFunction: () => void | Promise<void>) {
     return new URL(`data:text/javascript,${encodeURIComponent(fBody)}`);
 }
 
-function getCallerUrl() {
+function getCallerUrl(): string | void {
     for (const callSite of callsites()) {
         const uri = callSite.getFileName();
         if (uri) {
@@ -76,7 +76,6 @@ function getCallerUrl() {
             }
         }
     }
-    return undefined;
 }
 
 async function workerContext() {
