@@ -1,16 +1,18 @@
 import { builtinModules } from 'node:module';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser';
-import typescript from 'rollup-plugin-ts';
+import esbuild from 'rollup-plugin-esbuild';
 
 const external = Object.freeze([
     ...builtinModules,
     /([/\\])node_modules\1/,
 ]);
-const terserOptions = Object.freeze({
-    compress: false,
-    // format: { beautify: true },  // for debug
-    ecma: 2022,
+
+export const esbuildOptions = Object.freeze({
+    format: 'esm',
+    minify: true,
+    sourcemap: true,
+    target: 'node14',
+    treeShaking: true,
 });
 
 export default {
@@ -28,7 +30,6 @@ export default {
     },
     plugins: [
         nodeResolve(),
-        typescript(),
-        terser(terserOptions),
+        esbuild(esbuildOptions),
     ],
 };
