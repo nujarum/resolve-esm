@@ -1,0 +1,2 @@
+import{pathToFileURL as n}from"node:url";import i from"callsites";const s=/^\w+:\/\/.+/,f=Object.freeze([...new Set(process.execArgv).add("--experimental-import-meta-resolve").add("--no-warnings")]);function m(o){for(const r of i()){const e=r.getFileName();if(!e)continue;const t=s.test(e)?e:n(e).href;if(t!==o)return t}}export{f as execArgv,m as getCallerUrl};
+//# sourceMappingURL=_internal.mjs.map
