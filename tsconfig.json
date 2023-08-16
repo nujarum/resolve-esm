@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
+    "allowJs": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,8 +26,13 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "outDir": "./dist",
+    "paths": {
+      "#*": ["./src/*"],
+    },
     "preserveSymlinks": true,
     "resolveJsonModule": true,
+    "rootDir": ".",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
