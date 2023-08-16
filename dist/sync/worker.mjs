@@ -1,0 +1,2 @@
+import{workerData as c}from"node:worker_threads";const m=new TextEncoder,f=Object.freeze(["cause","message","name","stack"]),{buffer:s,parent:w,specifiers:y}=c,n=new Uint8Array(s,4),o=new Int32Array(s);try{const t=(await Promise.all(y.map(r=>import.meta.resolve(r,w)))).join(","),e=i(t,n);Atomics.store(o,0,e||NaN),Atomics.notify(o,0)}catch(t){const e=JSON.stringify(t,f),r=i(e,n);Atomics.store(o,0,-r),Atomics.notify(o,0)}function i(t,e){const{read:r,written:a}=m.encodeInto(t,e);if(r===t.length)return a;throw new RangeError("Too long text")}
+//# sourceMappingURL=worker.mjs.map
