@@ -48,7 +48,7 @@
     }
   },
   "files": [
-    "dist",
+    "dist/**/*.mjs",
     "types/**/index.d.ts"
   ],
   "homepage": "https://github.com/nujarum/resolve-esm#readme",
