@@ -43,10 +43,10 @@ Following [the change at Node.js v20](https://nodejs.org/en/blog/announcements/v
 However, asynchronous functions equivalent to v1.x can also be imported from `resolve-esm/async`, so users can still use asynchronous functions in situations such as when blocking is undesirable.
 
 ## Change supported Node.js versions
-Drop support for Node.js v14 ([already EOL](https://github.com/nodejs/release#release-schedule)) and requires Node.js v16 or higher.
+Node.js v14 ([already EOL](https://github.com/nodejs/release#release-schedule)) is no longer supported and requires Node.js v16 or higher.
 
 # Differences from similar modules
-This module is just a _wrapper_ that internally calls the original [`import.meta.resolve`] and has no resolution logic of its own.<br/>
+This module is just a lightweight _wrapper_ that internally calls the original [`import.meta.resolve`] and has no resolution logic of its own.<br/>
 Therefore, it will be easy to follow if the original [specification] changes, and easy to migrate when the original becomes [_Stable_] in the future.
 
 # Usage
