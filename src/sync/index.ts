@@ -60,7 +60,7 @@ export function importMetaResolveAll(iterable: Readonly<Iterable<string>>, paren
         const data = new Uint8Array(buffer, $.INT32_BYTES, Math.abs(byteLength));
         const text = decoder.decode(data);
         if (0 < byteLength) {
-            return text.split(',');
+            return text.split('\0');
         } else {
             throw Object.assign(new Error(), JSON.parse(text || 'null'));
         }

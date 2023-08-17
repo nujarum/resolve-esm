@@ -26,7 +26,7 @@ const destination = new Uint8Array(buffer, $.INT32_BYTES);
 const int32Array = new Int32Array(buffer);
 try {
     const results = await Promise.all(specifiers.map(specifier => import.meta.resolve!(specifier, parent)));
-    const text = results.join(',');
+    const text = results.join('\0');
     const written = encode(text, destination);
     Atomics.store(int32Array, $.INDEX, written || NaN);
     Atomics.notify(int32Array, $.INDEX);
