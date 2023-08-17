@@ -30,6 +30,8 @@ module.exports = {
                 'semi': ['error', 'always'],
                 '@typescript-eslint/no-invalid-void-type': 'off',
                 '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+                '@typescript-eslint/no-non-null-assertion': 'off',
+                '@typescript-eslint/prefer-reduce-type-parameter': 'off',
                 'unicorn/prefer-node-protocol': 'error',
             },
         },

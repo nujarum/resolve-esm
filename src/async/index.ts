@@ -29,18 +29,23 @@ export async function importMetaResolve(specifier: string, parent?: string | URL
  * @returns         A `Promise` that resolves to an array of module URL strings.
  */
 export async function importMetaResolveAll(iterable: Readonly<Iterable<string>>, parent?: string | URL): Promise<string[]> {
-    const specifiers = Array.isArray(iterable) ? iterable : [...iterable];
-    if (specifiers.length < 1) {
+    const sources = Array.isArray(iterable) ? iterable as string[] : [...iterable];
+    if (sources.length < 1) {
         return [];
     }
+    const names = [...new Set(sources)]; // dedupe
     parent ??= getCallerUrl(baseUrl);
     const worker = new Worker(workerPath, {
         execArgv,
-        workerData: { parent, specifiers } satisfies WorkerData,
+        workerData: { names, parent } satisfies WorkerData,
     } as WorkerOptions);
     try {
         const [results] = await once(worker, 'message') as [string[]];
-        return results;
+        const urlMap = names.reduce((obj, name, i) => {
+            obj[name] = results[i]!;
+            return obj;
+        }, Object.create(null) as Record<string, string>);
+        return sources.map(name => urlMap[name]!);
     } catch (e) {
         const { message, name, stack } = Object(e) as Error;
         throw Object.assign(new Error(), { message, name, stack });

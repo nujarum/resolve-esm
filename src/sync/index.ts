@@ -14,8 +14,8 @@ const enum $ {
 }
 
 const baseUrl = import.meta.url;
-const decoder = new TextDecoder();
 const require = createRequire(baseUrl);
+const textDecoder = new TextDecoder();
 const workerPath = require.resolve('#worker/sync');
 
 /**
@@ -27,7 +27,7 @@ const workerPath = require.resolve('#worker/sync');
  */
 export function importMetaResolve(specifier: string, parent?: string | URL): string {
     const [result] = importMetaResolveAll([specifier], parent);
-    return result!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    return result!;
 }
 
 /**
@@ -37,11 +37,12 @@ export function importMetaResolve(specifier: string, parent?: string | URL): str
  * @returns         An array of module URL strings.
  */
 export function importMetaResolveAll(iterable: Readonly<Iterable<string>>, parent?: string | URL): string[] {
-    const specifiers = Array.isArray(iterable) ? iterable : [...iterable];
-    const L = specifiers.length;
+    const sources = Array.isArray(iterable) ? iterable as string[] : [...iterable];
+    const L = sources.length;
     if (L < 1) {
         return [];
     }
+    const names = [...new Set(sources)]; // dedupe
     parent ??= getCallerUrl(baseUrl);
     let worker: Worker | undefined;
     try {
@@ -50,20 +51,24 @@ export function importMetaResolveAll(iterable: Readonly<Iterable<string>>, paren
         let unknownError: Error | undefined;
         worker = new Worker(workerPath, {
             execArgv,
-            workerData: { buffer, parent, specifiers } satisfies WorkerData,
+            workerData: { buffer, names, parent } satisfies WorkerData,
         } as WorkerOptions).once('error', e => unknownError = e);
         Atomics.wait(int32Array, $.INDEX, $.WAIT_VALUE, $.TIMEOUT_MSEC);
         if (unknownError) {
             throw unknownError;
         }
-        const byteLength = int32Array[0]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+        const byteLength = int32Array[0]!;
         const data = new Uint8Array(buffer, $.INT32_BYTES, Math.abs(byteLength));
-        const text = decoder.decode(data);
-        if (0 < byteLength) {
-            return text.split(',');
-        } else {
+        const text = textDecoder.decode(data);
+        if (!(0 < byteLength)) {
             throw Object.assign(new Error(), JSON.parse(text || 'null'));
         }
+        const results = text.split('\0');
+        const urlMap = names.reduce((obj, name, i) => {
+            obj[name] = results[i]!;
+            return obj;
+        }, Object.create(null) as Record<string, string>);
+        return sources.map(name => urlMap[name]!);
     } finally {
         void worker?.terminate();
     }

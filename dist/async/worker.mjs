@@ -1,2 +1,2 @@
-import{parentPort as r,workerData as t}from"node:worker_threads";const{parent:a,specifiers:o}=t,s=await Promise.all(o.map(e=>import.meta.resolve(e,a)));r.postMessage(s);
+import{parentPort as t,workerData as e}from"node:worker_threads";const{names:o,parent:r}=e,m=await Promise.all(o.map(a=>import.meta.resolve(a,r)));t.postMessage(m);
 //# sourceMappingURL=worker.mjs.map

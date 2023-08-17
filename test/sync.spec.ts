@@ -34,6 +34,13 @@ describe('importMetaResolveAll', () => {
         expect(typeof importMetaResolveAll).toBe('function');
     });
 
+    test('should resolve duplicates', () => {
+        const { tslib } = urlMap;
+        const actual = importMetaResolveAll(['tslib', 'tslib', 'tslib']);
+        const expected = [tslib, tslib, tslib];
+        expect(actual).toEqual(expected);
+    });
+
     test('should resolve all', () => {
         const actual = importMetaResolveAll(Object.keys(urlMap));
         const expected = Object.values(urlMap);
@@ -41,7 +48,7 @@ describe('importMetaResolveAll', () => {
     });
 
     test('should resolve empty', () => {
-        const actual = importMetaResolveAll([]);
+        const actual = importMetaResolveAll(new Set);
         const expected: string[] = [];
         expect(actual).toEqual(expected);
     });
