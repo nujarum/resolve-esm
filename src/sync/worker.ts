@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 import { workerData } from 'node:worker_threads';
 
 export interface WorkerData {
     readonly buffer: SharedArrayBuffer;
+    readonly names: readonly string[];
     readonly parent?: string | URL | undefined;
-    readonly specifiers: readonly string[];
 }
 
 const enum $ {
@@ -13,14 +11,14 @@ const enum $ {
     INT32_BYTES = 4,
 }
 
-const { buffer, parent, specifiers } = workerData as WorkerData;
+const { buffer, names, parent } = workerData as WorkerData;
 const destination = new Uint8Array(buffer, $.INT32_BYTES);
 const int32Array = new Int32Array(buffer);
 const textEncoder = new TextEncoder();
 
 let value: number | undefined;
 try {
-    const results = await Promise.all(specifiers.map(specifier => import.meta.resolve!(specifier, parent)));
+    const results = await Promise.all(names.map(name => import.meta.resolve!(name, parent)));
     const text = results.join('\0');
     value = encode(text, destination) || NaN;
 } catch (e) {
