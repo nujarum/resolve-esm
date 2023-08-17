@@ -14,8 +14,8 @@ const enum $ {
 }
 
 const baseUrl = import.meta.url;
-const decoder = new TextDecoder();
 const require = createRequire(baseUrl);
+const textDecoder = new TextDecoder();
 const workerPath = require.resolve('#worker/sync');
 
 /**
@@ -58,7 +58,7 @@ export function importMetaResolveAll(iterable: Readonly<Iterable<string>>, paren
         }
         const byteLength = int32Array[0]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
         const data = new Uint8Array(buffer, $.INT32_BYTES, Math.abs(byteLength));
-        const text = decoder.decode(data);
+        const text = textDecoder.decode(data);
         if (0 < byteLength) {
             return text.split('\0');
         } else {
