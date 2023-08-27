@@ -38,15 +38,14 @@ export function importMetaResolve(specifier: string, parent?: string | URL): str
  */
 export function importMetaResolveAll(iterable: Readonly<Iterable<string>>, parent?: string | URL): string[] {
     const sources = Array.isArray(iterable) ? iterable as string[] : [...iterable];
-    const L = sources.length;
-    if (L < 1) {
+    if (sources.length < 1) {
         return [];
     }
     const names = [...new Set(sources)]; // dedupe
     parent ??= getCallerUrl(baseUrl);
     let worker: Worker | undefined;
     try {
-        const buffer = new SharedArrayBuffer((L + 1) << $.LEFT_SHIFT);
+        const buffer = new SharedArrayBuffer((names.length + 1) << $.LEFT_SHIFT);
         const int32Array = new Int32Array(buffer);
         let unknownError: Error | undefined;
         worker = new Worker(workerPath, {
