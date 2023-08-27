@@ -47,8 +47,8 @@ export async function importMetaResolveAll(iterable: Readonly<Iterable<string>>,
         }, Object.create(null) as Record<string, string>);
         return sources.map(name => urlMap[name]!);
     } catch (e) {
-        const { message, name, stack } = Object(e) as Error;
-        throw Object.assign(new Error(), { message, name, stack });
+        const { cause, message, name, stack } = Object(e) as Error;
+        throw Object.assign(new Error(), { cause, message, name, stack });
     } finally {
         void worker.terminate();
     }

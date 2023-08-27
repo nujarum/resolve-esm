@@ -1,7 +1,7 @@
 {
   "name": "resolve-esm",
   "description": "Shim for `import.meta.resolve`",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": {
     "name": "nujarum",
     "url": "https://github.com/nujarum"
@@ -15,22 +15,22 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@rollup/plugin-node-resolve": "^15.2.0",
-    "@types/node": "^20.5.0",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
-    "@vitest/coverage-v8": "^0.34.2",
-    "concurrently": "^8.2.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@types/node": "^20.5.6",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "@vitest/coverage-v8": "^0.34.3",
+    "concurrently": "^8.2.1",
     "esbuild": "^0.19.2",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "husky": "^8.0.3",
     "rimraf": "^5.0.1",
-    "rollup": "^3.28.0",
+    "rollup": "^3.28.1",
     "rollup-plugin-esbuild": "^5.0.0",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.2"
+    "vitest": "^0.34.3"
   },
   "engines": {
     "node": ">=16"
